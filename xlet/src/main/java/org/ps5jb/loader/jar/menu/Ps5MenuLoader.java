@@ -91,18 +91,24 @@ public class Ps5MenuLoader {
         g2d.setFont(new Font("Sans", Font.PLAIN, 16));
         g2d.drawString("Press X to select menu entry.", 30, 50);
 
-        // ==== Lauftext unten ==== //
-        g2d.setColor(Color.WHITE);
-        g2d.setFont(new Font("Sans", Font.PLAIN, 18));
+        // ==== Lauftext mit Bounce-Effekt ==== //
+g2d.setColor(new Color(0, 255, 0)); // Retro-Terminal-Grün
+g2d.setFont(new Font("Sans", Font.PLAIN, 18));
 
-        int textWidth = g2d.getFontMetrics().stringWidth(scrollText);
-        int y = Config.getLoaderResolutionHeight() - 20; // ganz unten
-        g2d.drawString(scrollText, scrollX, y);
+int textWidth = g2d.getFontMetrics().stringWidth(scrollText);
 
-        scrollX -= 2;
-        if (scrollX + textWidth < 0) {
-            scrollX = Config.getLoaderResolutionWidth();
-        }
+// Bounce: Leichte vertikale Sinusbewegung
+int bounceAmplitude = 5; // Höhe des "Hüpfens"
+int bounceY = (int)(Math.sin(scrollX * 0.05) * bounceAmplitude);
+
+int baseY = Config.getLoaderResolutionHeight() - 20;
+g2d.drawString(scrollText, scrollX, baseY + bounceY);
+
+scrollX -= 2;
+if (scrollX + textWidth < 0) {
+    scrollX = Config.getLoaderResolutionWidth();
+}
+
     }
 
     public int getSelected() {
