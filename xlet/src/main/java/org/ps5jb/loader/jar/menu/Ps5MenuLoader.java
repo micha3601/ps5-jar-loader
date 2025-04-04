@@ -18,6 +18,10 @@ public class Ps5MenuLoader {
     private final Ps5MenuItem[] menuItems;
     private Map submenuItems = new HashMap();
 
+    // Lauftext-Variablen
+    private int scrollX = Config.getLoaderResolutionWidth();
+    private final String scrollText = "Bluray Disc by Hammer83~~USB+pipeline by iakdev~~Kstuff by Echostrech~~etahen by LM und viele mehr............................................................................................................................................................... Ende";
+
     public Ps5MenuLoader(final Ps5MenuItem[] menuItems) {
         this.menuItems = menuItems;
     }
@@ -86,6 +90,19 @@ public class Ps5MenuLoader {
         g2d.setColor(Color.LIGHT_GRAY);
         g2d.setFont(new Font("Sans", Font.PLAIN, 16));
         g2d.drawString("Press X to select menu entry.", 30, 50);
+
+        // ==== Lauftext unten ==== //
+        g2d.setColor(Color.WHITE);
+        g2d.setFont(new Font("Sans", Font.PLAIN, 18));
+
+        int textWidth = g2d.getFontMetrics().stringWidth(scrollText);
+        int y = Config.getLoaderResolutionHeight() - 20; // ganz unten
+        g2d.drawString(scrollText, scrollX, y);
+
+        scrollX -= 2;
+        if (scrollX + textWidth < 0) {
+            scrollX = Config.getLoaderResolutionWidth();
+        }
     }
 
     public int getSelected() {
