@@ -20,7 +20,7 @@ public class Ps5MenuLoader {
 
     // Lauftext-Variablen
     private int scrollX = Config.getLoaderResolutionWidth();
-    private final String scrollText = "Bluray Disc by Hammer83~~USB+pipeline by iakdev~~Kstuff by Echostrech~~etahen by LM und viele mehr............................................................................................................................................................... Ende";
+    private final String scrollText = "Bluray Disc by Hammer83~~USB+pipeline by iakdev~~Kstuff by Echostrech~~etahen by LM ............................................................................................................................................................... Ende";
 
     public Ps5MenuLoader(final Ps5MenuItem[] menuItems) {
         this.menuItems = menuItems;
